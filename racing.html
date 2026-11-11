@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LOTAK RACING 3D</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#080812;color:white;
+ font-family:Arial;text-align:center;
+}
+header{
+ padding:18px;background:#151326;
+ color:#ad80ff;font-size:25px;font-weight:bold;
+}
+h2{margin:15px}
+canvas{
+ display:block;width:95%;max-width:850px;
+ height:auto;margin:15px auto;
+ border:2px solid #8955e9;border-radius:12px;
+ background:#17172b;
+}
+.controls{
+ display:flex;justify-content:center;gap:12px;
+ flex-wrap:wrap;padding:10px;
+}
+button{
+ padding:15px 23px;border:0;border-radius:10px;
+ background:#8955e9;color:white;font-size:17px;
+ font-weight:bold;cursor:pointer;
+}
+button:active{background:#bd91ff}
+p{color:#ccc}
+</style>
+</head>
+<body>
+<header>🏁 LOTAK RACING 3D</header>
+<h2>¡Prepara tu coche!</h2>
+<p>Esquiva los obstáculos y consigue puntos.</p>
+<canvas id="game" width="700" height="500"></canvas>
+<div class="controls">
+<button id="left">⬅️</button>
+<button id="start">EMPEZAR</button>
+<button id="right">➡️</button>
+</div>
+<p>Usa las flechas del teclado o los botones.</p>
+<script>
+const canvas=document.getElementById("game");
+const ctx=canvas.getContext("2d");
+let car=350, obstacles=[],score=0,speed=4,running=false;
+let left=false,right=false,frame=0;
+
+function drawRoad(){
+ ctx.fillStyle="#17452d";
+ ctx.fillRect(0,0,700,500);
+ ctx.fillStyle="#34343c";
+ ctx.beginPath();
+ ctx.moveTo(120,0);ctx.lineTo(580,0);
+ ctx.lineTo(700,500);ctx.lineTo(0,500);
+ ctx.fill();
+ ctx.strokeStyle="white";
+ ctx.lineWidth=7;
+ ctx.setLineDash([35,30]);
+ ctx.lineDashOffset=-frame;
+ ctx.beginPath();ctx.moveTo(350,0);
+ ctx.lineTo(350,500);ctx.stroke();
+ ctx.setLineDash([]);
+}
+function drawCar(){
+ ctx.fillStyle="#a879ff";
+ ctx.fillRect(car-23,390,46,75);
+ ctx.fillStyle="#a8dfff";
+ ctx.fillRect(car-15,400,30,20);
+ ctx.fillStyle="#111";
+ ctx.fillRect(car-28,400,7,19);
+ ctx.fillRect(car+21,400,7,19);
+}
+function drawObstacles(){
+ obstacles.forEach(o=>{
+ ctx.fillStyle="#ffbd42";
+ ctx.fillRect(o.x-20,o.y,40,50);
+ ctx.fillStyle="#222";
+ ctx.fillRect(o.x-12,o.y+8,24,12);
+ });
+}
+function loop(){
+ if(!running)return;
+ frame+=speed;
+ if(left)car-=6;
+ if(right)car+=6;
+ car=Math.max(140,Math.min(560,car));
+ if(frame%75<speed)obstacles.push({
+ x:Math.random()*330+185,y:-60
+ });
+ obstacles.forEach(o=>o.y+=speed);
+ obstacles=obstacles.filter(o=>o.y<550);
+ for(const o of obstacles){
+ if(Math.abs(o.x-car)<38&&o.y>390&&o.y<465){
+ running=false;
+ alert("¡Fin de la carrera! Puntos: "+score);
+ return;
+ }
+ }
+ score++;
+ drawRoad();drawObstacles();drawCar();
+ ctx.fillStyle="white";ctx.font="bold 22px Arial";
+ ctx.fillText("PUNTOS: "+score,20,35);
+ requestAnimationFrame(loop);
+}
+function start(){
+ car=350;obstacles=[];score=0;frame=0;
+ running=true;loop();
+}
+document.getElementById("start").onclick=start;
+document.getElementById("left").onpointerdown=()=>left=true;
+document.getElementById("left").onpointerup=()=>left=false;
+document.getElementById("right").onpointerdown=()=>right=true;
+document.getElementById("right").onpointerup=()=>right=false;
+document.addEventListener("keydown",e=>{
+ if(e.key==="ArrowLeft")left=true;
+ if(e.key==="ArrowRight")right=true;
+});
+document.addEventListener("keyup",e=>{
+ if(e.key==="ArrowLeft")left=false;
+ if(e.key==="ArrowRight")right=false;
+});
+drawRoad();drawCar();
+</script>
+</body>
+</html>
