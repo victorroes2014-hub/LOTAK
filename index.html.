@@ -3,141 +3,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LOTAK | Gaming</title>
+<title>LOTA - Gaming</title>
 <style>
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #090911;
-  color: white;
+*{box-sizing:border-box}
+body{
+ margin:0;
+ background:#090b12;
+ color:white;
+ font-family:Arial,sans-serif;
 }
-header {
-  padding: 22px 7%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #11111e;
-  border-bottom: 1px solid #29243d;
+header{
+ padding:25px 7%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ background:#111522;
+ border-bottom:1px solid #292e40;
 }
-.logo {
-  font-size: 30px;
-  font-weight: 900;
-  color: #a879ff;
-  letter-spacing: 3px;
+.logo{font-size:32px;font-weight:bold;color:#9c75ff}
+nav a{color:white;text-decoration:none;margin-left:20px}
+.hero{text-align:center;padding:75px 20px}
+.hero h1{font-size:55px;margin:0}
+.hero span{color:#9c75ff}
+.hero p{color:#a8adbd}
+.search{
+ padding:14px;width:85%;max-width:450px;
+ border:1px solid #393e50;border-radius:10px;
+ background:#171c2a;color:white;margin-top:20px;
 }
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 20px;
+section{padding:25px 7%}
+.games{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+ gap:20px;
 }
-.hero {
-  text-align: center;
-  padding: 85px 20px;
-  background: linear-gradient(135deg,#19112e,#101020,#24113b);
+.game{
+ background:#171c2a;border:1px solid #292e40;
+ border-radius:15px;overflow:hidden;
 }
-.hero h1 { font-size: 48px; margin: 0 0 15px; }
-.hero span { color: #b68aff; }
-.hero p { color: #c5c1d0; font-size: 17px; }
-main { padding: 35px 7%; }
-h2 { margin-bottom: 25px; }
-.games {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(210px,1fr));
-  gap: 20px;
+.game img{width:100%;height:140px;object-fit:cover}
+.game h3{padding:0 15px}
+.game p{padding:0 15px;color:#a8adbd}
+.game button{
+ margin:0 15px 18px;padding:10px 18px;
+ background:#8157ee;color:white;border:0;
+ border-radius:8px;cursor:pointer;
 }
-.game {
-  background: #171725;
-  border: 1px solid #302b43;
-  border-radius: 14px;
-  padding: 25px;
-  transition: .2s;
-}
-.game:hover {
-  transform: translateY(-5px);
-  border-color: #a879ff;
-}
-.game .emoji { font-size: 45px; }
-.game h3 { margin-bottom: 8px; }
-.game p { color: #aaa5b8; font-size: 14px; }
-button {
-  background: #8955e9;
-  color: white;
-  border: 0;
-  border-radius: 8px;
-  padding: 11px 17px;
-  cursor: pointer;
-  font-weight: bold;
-}
-button:hover { background: #a879ff; }
-footer {
-  text-align: center;
-  padding: 25px;
-  color: #888;
-  border-top: 1px solid #29243d;
-}
+footer{text-align:center;padding:30px;color:#777}
 </style>
 </head>
 <body>
-
 <header>
-  <div class="logo">LOTAK</div>
-  <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#juegos">Juegos</a>
-    <a href="#categorias">Categorías</a>
-  </nav>
+<div class="logo">LOTA</div>
+<nav><a href="#">Inicio</a><a href="#juegos">Juegos</a></nav>
 </header>
-
-<section class="hero" id="inicio">
-  <h1>BIENVENIDO A <span>LOTAK</span></h1>
-  <p>Tu plataforma de videojuegos favorita.</p>
-  <a href="#juegos"><button>EXPLORAR JUEGOS</button></a>
+<div class="hero">
+<h1>BIENVENIDO A <span>LOTA</span></h1>
+<p>Tu universo de videojuegos empieza aquí.</p>
+<input class="search" id="busqueda" placeholder="Buscar juegos..." oninput="buscar()">
+</div>
+<section id="juegos">
+<h2>🎮 Explora los juegos</h2>
+<div class="games" id="lista">
+<div class="game">
+<img src="https://placehold.co/500x300/292044/ffffff?text=Adventure" alt="Aventura">
+<h3>Aventuras</h3><p>Explora nuevos mundos.</p>
+<button onclick="alert('Próximamente')">Jugar</button>
+</div>
+<div class="game">
+<img src="https://placehold.co/500x300/202b48/ffffff?text=Racing" alt="Carreras">
+<h3>Carreras</h3><p>Compite y gana.</p>
+<button onclick="alert('Próximamente')">Jugar</button>
+</div>
+<div class="game">
+<img src="https://placehold.co/500x300/382044/ffffff?text=Action" alt="Acción">
+<h3>Acción</h3><p>Vive grandes desafíos.</p>
+<button onclick="alert('Próximamente')">Jugar</button>
+</div>
+</div>
 </section>
-
-<main>
-  <section id="juegos">
-    <h2>🎮 Juegos destacados</h2>
-    <div class="games">
-      <div class="game">
-        <div class="emoji">🏎️</div>
-        <h3>Juegos de carreras</h3>
-        <p>Velocidad y competición.</p>
-        <button onclick="alert('Próximamente')">Ver juegos</button>
-      </div>
-      <div class="game">
-        <div class="emoji">⚔️</div>
-        <h3>Acción</h3>
-        <p>Aventura y desafíos.</p>
-        <button onclick="alert('Próximamente')">Ver juegos</button>
-      </div>
-      <div class="game">
-        <div class="emoji">⚽</div>
-        <h3>Deportes</h3>
-        <p>Compite y demuestra tu habilidad.</p>
-        <button onclick="alert('Próximamente')">Ver juegos</button>
-      </div>
-      <div class="game">
-        <div class="emoji">🧩</div>
-        <h3>Rompecabezas</h3>
-        <p>Entrena tu mente.</p>
-        <button onclick="alert('Próximamente')">Ver juegos</button>
-      </div>
-    </div>
-  </section>
-
-  <section id="categorias" style="margin-top:50px">
-    <h2>✨ Sobre LOTAK</h2>
-    <p>Un lugar para descubrir y disfrutar de videojuegos de todo tipo.</p>
-  </section>
-</main>
-
-<footer>
-  © 2026 LOTAK - Tu mundo gaming
-</footer>
-
+<footer>LOTA © 2026 - Tu plataforma de videojuegos</footer>
+<script>
+function buscar(){
+ let texto=document.getElementById('busqueda').value.toLowerCase();
+ document.querySelectorAll('.game').forEach(juego=>{
+ juego.style.display=juego.innerText.toLowerCase().includes(texto)?'block':'none';
+ });
+}
+</script>
 </body>
 </html>
+
 
 
 
