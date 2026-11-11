@@ -1,306 +1,144 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LOTA - Gaming Platform</title>
-
+<title>LOTAK | Gaming</title>
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+* { box-sizing: border-box; }
 body {
-  background: #08090d;
-  color: white;
+  margin: 0;
   font-family: Arial, sans-serif;
+  background: #090911;
+  color: white;
 }
-
 header {
-  height: 75px;
+  padding: 22px 7%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 0 7%;
-  border-bottom: 1px solid #20212a;
-  background: #0d0e14;
+  align-items: center;
+  background: #11111e;
+  border-bottom: 1px solid #29243d;
 }
-
 .logo {
   font-size: 30px;
   font-weight: 900;
-  color: #a855f7;
+  color: #a879ff;
   letter-spacing: 3px;
 }
-
 nav a {
-  color: #bbb;
+  color: white;
   text-decoration: none;
-  margin-left: 25px;
+  margin-left: 20px;
 }
-
-nav a:hover {
-  color: #a855f7;
-}
-
 .hero {
-  padding: 90px 8%;
-  background: radial-gradient(ellipse at 80% 50%, #30204e, #08090d 65%);
+  text-align: center;
+  padding: 85px 20px;
+  background: linear-gradient(135deg,#19112e,#101020,#24113b);
 }
-
-.hero h1 {
-  font-size: clamp(45px, 8vw, 75px);
-  margin-bottom: 20px;
-}
-
-.hero h1 span {
-  color: #a855f7;
-}
-
-.hero p {
-  color: #aaa;
-  font-size: 18px;
-  margin-bottom: 30px;
-}
-
-.btn {
-  background: #9333ea;
-  color: white;
-  padding: 15px 28px;
-  border: 0;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background: #a855f7;
-}
-
-.catalog {
-  padding: 55px 7%;
-}
-
-.catalog h2 {
-  font-size: 30px;
-  margin-bottom: 25px;
-}
-
-.search {
-  width: 100%;
-  padding: 15px;
-  background: #171821;
-  border: 1px solid #292a36;
-  border-radius: 8px;
-  color: white;
-  margin-bottom: 25px;
-  font-size: 16px;
-}
-
-.filters {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 30px;
-}
-
-.filters button {
-  background: #191a24;
-  color: white;
-  border: 1px solid #30313d;
-  padding: 10px 18px;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-.filters button.active,
-.filters button:hover {
-  background: #9333ea;
-}
-
+.hero h1 { font-size: 48px; margin: 0 0 15px; }
+.hero span { color: #b68aff; }
+.hero p { color: #c5c1d0; font-size: 17px; }
+main { padding: 35px 7%; }
+h2 { margin-bottom: 25px; }
 .games {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 22px;
+  grid-template-columns: repeat(auto-fit,minmax(210px,1fr));
+  gap: 20px;
 }
-
 .game {
-  background: #151620;
-  border: 1px solid #272834;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: 0.25s;
+  background: #171725;
+  border: 1px solid #302b43;
+  border-radius: 14px;
+  padding: 25px;
+  transition: .2s;
 }
-
 .game:hover {
-  transform: translateY(-6px);
-  border-color: #9333ea;
+  transform: translateY(-5px);
+  border-color: #a879ff;
 }
-
-.cover {
-  height: 155px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 65px;
+.game .emoji { font-size: 45px; }
+.game h3 { margin-bottom: 8px; }
+.game p { color: #aaa5b8; font-size: 14px; }
+button {
+  background: #8955e9;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  padding: 11px 17px;
+  cursor: pointer;
+  font-weight: bold;
 }
-
-.purple { background: linear-gradient(135deg,#431477,#171126); }
-.blue { background: linear-gradient(135deg,#104c80,#101725); }
-.red { background: linear-gradient(135deg,#8d2525,#261015); }
-.green { background: linear-gradient(135deg,#17613b,#101d19); }
-
-.info {
-  padding: 18px;
-}
-
-.info h3 {
-  margin-bottom: 8px;
-}
-
-.info p {
-  color: #999;
-  font-size: 14px;
-  margin-bottom: 15px;
-}
-
-.tag {
-  color: #c084fc;
-  font-size: 12px;
-  margin-bottom: 12px;
-}
-
+button:hover { background: #a879ff; }
 footer {
   text-align: center;
-  padding: 35px;
-  border-top: 1px solid #252630;
-  color: #777;
-}
-
-@media(max-width:600px) {
-  header { padding: 0 5%; }
-  nav a { margin-left: 10px; font-size: 13px; }
-  .hero { padding: 65px 7%; }
+  padding: 25px;
+  color: #888;
+  border-top: 1px solid #29243d;
 }
 </style>
 </head>
-
 <body>
 
 <header>
-  <div class="logo">LOTA</div>
+  <div class="logo">LOTAK</div>
   <nav>
     <a href="#inicio">Inicio</a>
     <a href="#juegos">Juegos</a>
+    <a href="#categorias">Categorías</a>
   </nav>
 </header>
 
 <section class="hero" id="inicio">
-  <h1>PLAY YOUR <span>WORLD.</span></h1>
-  <p>Descubre nuevos mundos. Juega sin límites.</p>
-  <button class="btn" onclick="document.getElementById('juegos').scrollIntoView({behavior:'smooth'})">
-    EXPLORAR JUEGOS
-  </button>
+  <h1>BIENVENIDO A <span>LOTAK</span></h1>
+  <p>Tu plataforma de videojuegos favorita.</p>
+  <a href="#juegos"><button>EXPLORAR JUEGOS</button></a>
 </section>
 
-<section class="catalog" id="juegos">
-  <h2>Explora los juegos</h2>
-
-  <input
-    class="search"
-    id="search"
-    type="text"
-    placeholder="Buscar videojuegos..."
-  >
-
-  <div class="filters">
-    <button class="active" onclick="filterGames('Todos',this)">Todos</button>
-    <button onclick="filterGames('3D',this)">3D</button>
-    <button onclick="filterGames('Acción',this)">Acción</button>
-    <button onclick="filterGames('Aventura',this)">Aventura</button>
-  </div>
-
-  <div class="games" id="games">
-
-    <article class="game" data-category="3D">
-      <div class="cover purple">🌌</div>
-      <div class="info">
-        <div class="tag">3D · EXPLORACIÓN</div>
-        <h3>Galaxy World</h3>
-        <p>Explora un universo lleno de misterios.</p>
-        <button class="btn" onclick="alert('Próximamente en LOTA')">Jugar</button>
+<main>
+  <section id="juegos">
+    <h2>🎮 Juegos destacados</h2>
+    <div class="games">
+      <div class="game">
+        <div class="emoji">🏎️</div>
+        <h3>Juegos de carreras</h3>
+        <p>Velocidad y competición.</p>
+        <button onclick="alert('Próximamente')">Ver juegos</button>
       </div>
-    </article>
-
-    <article class="game" data-category="Acción">
-      <div class="cover red">⚔️</div>
-      <div class="info">
-        <div class="tag">ACCIÓN</div>
-        <h3>Battle Arena</h3>
-        <p>Entra en una arena y demuestra tu habilidad.</p>
-        <button class="btn" onclick="alert('Próximamente en LOTA')">Jugar</button>
+      <div class="game">
+        <div class="emoji">⚔️</div>
+        <h3>Acción</h3>
+        <p>Aventura y desafíos.</p>
+        <button onclick="alert('Próximamente')">Ver juegos</button>
       </div>
-    </article>
-
-    <article class="game" data-category="Aventura">
-      <div class="cover green">🌳</div>
-      <div class="info">
-        <div class="tag">AVENTURA</div>
-        <h3>Lost Forest</h3>
-        <p>Descubre los secretos de un bosque misterioso.</p>
-        <button class="btn" onclick="alert('Próximamente en LOTA')">Jugar</button>
+      <div class="game">
+        <div class="emoji">⚽</div>
+        <h3>Deportes</h3>
+        <p>Compite y demuestra tu habilidad.</p>
+        <button onclick="alert('Próximamente')">Ver juegos</button>
       </div>
-    </article>
-
-    <article class="game" data-category="3D">
-      <div class="cover blue">🚀</div>
-      <div class="info">
-        <div class="tag">3D · SIMULACIÓN</div>
-        <h3>Space Simulator</h3>
-        <p>Prepárate para descubrir el espacio.</p>
-        <button class="btn" onclick="alert('Próximamente en LOTA')">Jugar</button>
+      <div class="game">
+        <div class="emoji">🧩</div>
+        <h3>Rompecabezas</h3>
+        <p>Entrena tu mente.</p>
+        <button onclick="alert('Próximamente')">Ver juegos</button>
       </div>
-    </article>
+    </div>
+  </section>
 
-  </div>
-</section>
+  <section id="categorias" style="margin-top:50px">
+    <h2>✨ Sobre LOTAK</h2>
+    <p>Un lugar para descubrir y disfrutar de videojuegos de todo tipo.</p>
+  </section>
+</main>
 
 <footer>
-  © 2026 LOTA Gaming Platform · Todos los derechos reservados
+  © 2026 LOTAK - Tu mundo gaming
 </footer>
-
-<script>
-let currentFilter = "Todos";
-
-function filterGames(category, button) {
-  currentFilter = category;
-
-  document.querySelectorAll(".filters button").forEach(b => {
-    b.classList.remove("active");
-  });
-
-  button.classList.add("active");
-  updateGames();
-}
-
-function updateGames() {
-  const search = document.getElementById("search").value.toLowerCase();
-
-  document.querySelectorAll(".game").forEach(game => {
-    const matchesSearch = game.innerText.toLowerCase().includes(search);
-    const matchesFilter = currentFilter === "Todos" ||
-      game.dataset.category === currentFilter;
-
-    game.style.display = matchesSearch && matchesFilter ? "block" : "none";
-  });
-}
-
-document.getElementById("search").addEventListener("input", updateGames);
-</script>
 
 </body>
 </html>
+
+
+
 
